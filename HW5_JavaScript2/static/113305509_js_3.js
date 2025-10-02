@@ -13,8 +13,9 @@ function updateTimer() {
 
 document.getElementById("guess").addEventListener("click", function(){
     let num = Number(document.getElementById("num").value);
+    let hint = document.getElementById("hint");
     if(num > 100 || num < 0){
-        alert("輸入錯誤")
+        hint.textContent = "輸入錯誤，請輸入 0~100 之間的數字";
     }else{
         if (startTime === null) {
             startTime = Date.now();
@@ -22,9 +23,9 @@ document.getElementById("guess").addEventListener("click", function(){
         }
         count++;
         if(num > r){
-            alert("太大了");
+            hint.textContent = "太大了";
         }else if(num < r){
-            alert("太小了");
+            hint.textContent = "太小了";
         }else{
             clearInterval(timerInterval);
             alert("猜到了 你猜了"+count+"次");
