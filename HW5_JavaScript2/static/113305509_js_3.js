@@ -1,3 +1,4 @@
+let round = 1;  
 let count = 0;
 let r = Math.floor(Math.random() * 101);
 
@@ -16,37 +17,42 @@ document.getElementById("guess").addEventListener("click", function(){
     let hint = document.getElementById("hint");
     let timer = document.getElementById("timer");
     let guessLog = document.getElementById("guessLog"); 
+
     if(num > 100 || num < 0){
         hint.textContent = "輸入錯誤，請輸入 0~100 之間的數字";
-    }else{
-        if (startTime === null) {
-            startTime = Date.now();
-            timerInterval = setInterval(updateTimer, 100);
-        }
-        count++;
+        return;
+    }
 
-        let currentTime = timer.textContent;
-        let now = new Date().toLocaleTimeString();
+    if (startTime === null) {
+        startTime = Date.now();
+        timerInterval = setInterval(updateTimer, 100);
+    }
+
+    count++;
+
+    if(num > r){
+        hint.textContent = "太大了";
+    } else if(num < r){
+        hint.textContent = "太小了";
+    } else if(num === r){
+        let timeUsed = timer.textContent;
+        clearInterval(timerInterval);
+
+        
+        alert(`回合 ${round} 猜對了！共猜了 ${count} 次，耗時 ${timeUsed} 秒`);
 
         
         let record = document.createElement("p");
-        record.textContent = `第 ${count} 次：${currentTime} 秒 (${now})`;
+        record.textContent = ` 回合 ${round}：${count} 次，耗時 ${timeUsed} 秒`;
+        record.style.color = "green";
         guessLog.appendChild(record);
 
-        if(num > r){
-            hint.textContent = "太大了";
-        }else if(num < r){
-            hint.textContent = "太小了";
-        }else if(num = r){
-            let timeUsed = document.getElementById("timer").textContent;
-            clearInterval(timerInterval);
-            alert(`你猜了${count}次 花${timeUsed}秒`);
-            r = Math.floor(Math.random() * 101); 
-            count = 0;                    
-            startTime = null;            
-            timer.textContent = "0.00";
-            guessLog.innerHTML = "";
-            hint.textContent = "";
-        }
+        
+        round++;
+        count = 0;
+        r = Math.floor(Math.random() * 101);
+        startTime = null;  
+        timer.textContent = "0.00";
+        hint.textContent = "";
     }
 });
