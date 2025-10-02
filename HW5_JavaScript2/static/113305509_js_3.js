@@ -1,4 +1,4 @@
-let round = 1;  
+let round = 1;  // 回合數
 let count = 0;
 let r = Math.floor(Math.random() * 101);
 
@@ -38,16 +38,18 @@ document.getElementById("guess").addEventListener("click", function(){
         let timeUsed = timer.textContent;
         clearInterval(timerInterval);
 
-        
-        alert(`回合 ${round} 猜對了！共猜了 ${count} 次，耗時 ${timeUsed} 秒`);
+        let now = new Date().toLocaleTimeString(); // 當下時間
 
-        
+        // alert 顯示本回合資訊與當時時間
+        alert(`回合 ${round} 猜對了！共猜了 ${count} 次，耗時 ${timeUsed} 秒 (時間: ${now})`);
+
+        // 在 guessLog 紀錄回合結果與當時時間
         let record = document.createElement("p");
-        record.textContent = ` 回合 ${round}：${count} 次，耗時 ${timeUsed} 秒`;
+        record.textContent = `✔ 回合 ${round}：${count} 次，耗時 ${timeUsed} 秒 (時間: ${now})`;
         record.style.color = "green";
         guessLog.appendChild(record);
 
-        
+        // 準備下一回合
         round++;
         count = 0;
         r = Math.floor(Math.random() * 101);
