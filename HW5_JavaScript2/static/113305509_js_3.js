@@ -41,8 +41,12 @@ document.getElementById("guess").addEventListener("click", function(){
             let timeUsed = document.getElementById("timer").textContent;
             clearInterval(timerInterval);
             alert(`你猜了${count}次 花${timeUsed}秒`);
-            r = Math.floor(Math.random() * 101);
-            count = 0;
+            r = Math.floor(Math.random() * 101); 
+            count = 0;                    
+            startTime = null;            
+            timer.textContent = "0.00";
+            guessLog.innerHTML = "";
+            hint.textContent = "";
         }
     }
 });
