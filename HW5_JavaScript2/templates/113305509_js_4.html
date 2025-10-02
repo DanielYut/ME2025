@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="../static/113305509_js_4.js" defer></script>
+    <link rel="stylesheet" href="../static/113305509_css_4.css">
+</head>
+<body>
+    <h2>購物車</h2>
+    <table border="1">
+        <thead>
+        <tr>
+            <th><input type="checkbox" id="master"></th>
+            <th>商品名稱</th>
+            <th>商品庫存</th>
+            <th>單價</th>
+            <th>數量</th>
+            <th>總計</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><input type="checkbox" class="item-chk"></td>
+            <td class="name"><img src="../static/img/black.webp" width="100">紅茶</td>
+            <td class="stock">30</td>
+            <td class="price">$10</td>
+            <td><input type="number" class="qty" value="1" min="1"></td>
+            <td class="subtotal">$10</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="item-chk"></td>
+            <td class="name"><img src="../static/img/green.webp" width="100">綠茶</td>
+            <td class="stock">30</td>
+            <td class="price">$10</td>
+            <td><input type="number" class="qty" value="1" min="1"></td>
+            <td class="subtotal">$10</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="item-chk"></td>
+            <td class="name"><img src="../static/img/milk.webp" width="100">奶茶</td>
+            <td class="stock">30</td>
+            <td class="price">$10</td>
+            <td><input type="number" class="qty" value="1" min="1"></td>
+            <td class="subtotal">$10</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="5">total</td>
+            <td>$<span id="total">0</span></td>
+        </tr>
+        </tfoot>
+    </table>
+    <button id="checkout">結帳</button>
+</body>
+</html>
