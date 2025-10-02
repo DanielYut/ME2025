@@ -26,9 +26,10 @@ document.getElementById("guess").addEventListener("click", function(){
             hint.textContent = "太大了";
         }else if(num < r){
             hint.textContent = "太小了";
-        }else{
+        }else if(num = r){
+            let timeUsed = document.getElementById("timer").textContent;
             clearInterval(timerInterval);
-            alert("猜到了 你猜了"+count+"次");
+            alert(`你猜了${count}次 花${timeUsed}秒`);
             r = Math.floor(Math.random() * 101);
             count = 0;
         }
